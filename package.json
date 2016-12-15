@@ -1,0 +1,23 @@
+{
+  "name": "qwebs-starter-kit-polymer",
+  "version": "0.0.1",
+  "description": "Starter kit to create a Qwebs server with Polymer as front-end",
+  "main": "server.js",
+  "dependencies": {
+    "qwebs": "latest"
+  },
+  "devDependencies": {
+    "jasmine-node": "latest",
+    "protractor": "latest",
+    "coveralls": "latest",
+    "istanbul": "latest"
+  },
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node tests/server/*.spec.js",
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "Benoît Claveau",
+    "email": "benoit.claveau@gmail.com"
+  }
+}

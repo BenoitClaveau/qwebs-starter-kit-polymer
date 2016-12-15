@@ -1,0 +1,8 @@
+{
+    "services": [
+        { "name": "$route", "location": "./services/route" }
+    ],
+    "locators": [
+        { "get": "/", "service": "$route", "method": "index" }
+    ]
+}
