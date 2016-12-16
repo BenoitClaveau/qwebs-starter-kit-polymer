@@ -1,5 +1,9 @@
 # qwebs-starter-kit-polymer
 
+ [![NPM][npm-image]][npm-url]
+ [![Build Status][travis-image]][travis-url]
+ [![Coverage Status][coveralls-image]][coveralls-url]
+ 
 Starter kit to create a Qwebs server with Polymer as front-end.
 
 ## Start
@@ -17,3 +21,10 @@ Run server tests
 ```shell
 npm test
 ```
+
+[npm-image]: https://img.shields.io/npm/v/qwebs-starter-kit-polymer.svg
+[npm-url]: https://npmjs.org/package/qwebs-starter-kit-polymer
+[travis-image]: https://travis-ci.org/BenoitClaveau/qwebs-starter-kit-polymer.svg?branch=master
+[travis-url]: https://travis-ci.org/BenoitClaveau/qwebs-starter-kit-polymer
+[coveralls-image]: https://coveralls.io/repos/BenoitClaveau/qwebs-starter-kit-polymer/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/BenoitClaveau/qwebs-starter-kit-polymer?branch=master
