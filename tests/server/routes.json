@@ -1,0 +1,5 @@
+{
+    "services": [
+        { "name": "$user", "location": "../../services/user" }
+    ]
+}
