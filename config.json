@@ -1,7 +1,7 @@
 {
     "compress": false,
     "verbose": true,
-    "folder": "./public",
+    "folder": "./build",
     "routes": "./routes.json",
     "http": {
         "port": 3000,

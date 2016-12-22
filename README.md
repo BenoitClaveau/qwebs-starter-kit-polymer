@@ -14,6 +14,13 @@ Run server on http://localhost:3000
 node server.js
 ```
 
+## Prod
+
+```shell
+npm install gulp -g
+gulp prod
+```
+
 ## Tests
 
 Run server tests

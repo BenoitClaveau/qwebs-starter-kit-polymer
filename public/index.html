@@ -59,14 +59,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         var onload = function() {
 
-          var elements = ["/src/my-app.html"];
+          // var elements = [
+          //   "/src/my-app.html"];
 
-          elements.forEach(function(url) {
-              var link = document.createElement('link');
-              link.rel = 'import';
-              link.href = url;
-              document.head.appendChild(link);
-          });
+          // elements.forEach(function(url) {
+          //     var link = document.createElement('link');
+          //     link.rel = 'import';
+          //     link.href = url;
+          //     document.head.appendChild(link);
+          // });
 
           // For native Imports, manually fire WebComponentsReady so user code
           // can use the same code path for native and polyfill'd imports.
@@ -101,6 +102,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       //   });
       // }
     </script>
+
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/src/my-app.html">
 
     <style>
       body {

@@ -4,15 +4,17 @@
   "description": "Starter kit to create a Qwebs server with Polymer as front-end",
   "main": "server.js",
   "dependencies": {
-    "qwebs": "latest",
-    "vulcanize": "latest",
-    "crisper": "latest"
+    "qwebs": "latest"
   },
   "devDependencies": {
+    "coveralls": "latest",
+    "istanbul": "latest",
     "jasmine-node": "latest",
     "protractor": "latest",
-    "coveralls": "latest",
-    "istanbul": "latest"
+    "gulp": "latest",
+    "gulp-vulcanize": "latest",
+    "gulp-crisper": "latest",
+    "gulp-json-editor": "latest"
   },
   "scripts": {
     "test": "node node_modules/jasmine-node/bin/jasmine-node tests/server/*.spec.js",
