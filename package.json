@@ -8,13 +8,16 @@
   },
   "devDependencies": {
     "coveralls": "latest",
+    "gulp": "latest",
+    "gulp-concat": "^2.6.1",
+    "gulp-crisper": "latest",
+    "gulp-json-editor": "latest",
+    "gulp-minify-inline": "^0.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-vulcanize": "latest",
     "istanbul": "latest",
     "jasmine-node": "latest",
-    "protractor": "latest",
-    "gulp": "latest",
-    "gulp-vulcanize": "latest",
-    "gulp-crisper": "latest",
-    "gulp-json-editor": "latest"
+    "protractor": "latest"
   },
   "scripts": {
     "test": "node node_modules/jasmine-node/bin/jasmine-node tests/server/*.spec.js",
