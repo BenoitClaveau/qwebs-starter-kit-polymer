@@ -4,7 +4,15 @@
  [![Build Status][travis-image]][travis-url]
  [![Coverage Status][coveralls-image]][coveralls-url]
  
-Starter kit to create a Qwebs server with Polymer as front-end.
+Starter kit to create a Single Page Application with [https://www.polymer-project.org/](Polymer 2.0) as front-end and [https://www.npmjs.com/package/qwebs](Qwebs) as server.
+
+## Installation
+
+```shell
+git clone https://github.com/BenoitClaveau/qwebs-starter-kit-polymer.git
+cd qwebs-starter-kit-polymer.git
+npm install
+```
 
 ## Start
 
@@ -14,19 +22,19 @@ Run server on http://localhost:3000
 node server.js
 ```
 
-## Prod
-
-```shell
-npm install gulp -g
-gulp prod
-```
-
 ## Tests
 
 Run server tests
 
 ```shell
 npm test
+```
+
+## Build web site for production
+
+```shell
+npm install gulp -g
+gulp prod
 ```
 
 [npm-image]: https://img.shields.io/npm/v/qwebs-starter-kit-polymer.svg
