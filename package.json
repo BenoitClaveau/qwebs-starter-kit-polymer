@@ -4,17 +4,13 @@
   "description": "Starter kit to create a Qwebs server with Polymer as front-end",
   "main": "server.js",
   "dependencies": {
-    "qwebs": "latest"
+    "qwebs": "latest",
+    "qwebs-http": "latest"
   },
   "devDependencies": {
     "coveralls": "latest",
     "gulp": "latest",
-    "gulp-concat": "^2.6.1",
-    "gulp-crisper": "latest",
     "gulp-json-editor": "latest",
-    "gulp-minify-inline": "^0.2.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-vulcanize": "latest",
     "istanbul": "latest",
     "jasmine-node": "latest",
     "protractor": "latest"

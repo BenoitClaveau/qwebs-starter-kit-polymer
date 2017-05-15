@@ -1,82 +1,21 @@
-var gulp = require('gulp');
-var vulcanize = require('gulp-vulcanize');
-var crisper = require('gulp-crisper');
-var jeditor = require("gulp-json-editor");
-var path = require("path");
-var minifyInline = require('gulp-minify-inline');
-var rename = require("gulp-rename");
-var concat = require('gulp-concat');
+const gulp = require("gulp");
+const jeditor = require("gulp-json-editor");
+const mergeStream = require("merge-stream");
+const PolymerProject = require("polymer-build").PolymerProject;
+const git = require("gulp-git");
 
-gulp.task('vulcanize-index', function() {
-  gulp.src('public/index.html')
-    .pipe(vulcanize({
-      excludes: [
-            '/bower_components/polymer/polymer.html'
-        ],
-        stripExcludes: [
-            '/bower_components/polymer/polymer.html'
-        ],
-      abspath: path.resolve('public'),
-      inputUrl: '/index.html',
-      stripExcludes: false,
-      inlineScripts: true,
-      inlineCss: true,
-      implicitStrip: true,
-      stripComments: true
-    }))
-    .pipe(minifyInline())
-    //.pipe(crisper())
-    .pipe(gulp.dest('build'));
+gulp.task("polymer.build", function() {
+    process.chdir("public");
+    const project = new PolymerProject(require("./public/polymer.json"));
+    mergeStream(project.sources(), project.dependencies())
+        .pipe(project.bundler)
+        .pipe(gulp.dest("../build/"))
+        .on("finish", () => {
+            process.chdir("./..");
+        });
 });
 
-gulp.task('vulcanize-views', function() {
-  gulp.src(['public/src/*.html', '!public/src/my-app.html'])
-    .pipe(vulcanize({
-        excludes: [
-            './public/bower_components/polymer/polymer.html'
-        ],
-        stripExcludes: [
-            './public/bower_components/polymer/polymer.html'
-        ],
-        inlineScripts: true,
-        inlineCss: true,
-        implicitStrip: true,
-        stripComments: true
-    }))
-    .pipe(minifyInline())
-    // .pipe(crisper())
-    .pipe(gulp.dest("build/src"));
-});
-
-gulp.task('vulcanize-polymer', function() {
-    return gulp.src([
-        'public/bower_components/polymer/polymer.html',
-        'public/bower_components/polymer/polymer-mini.html',
-        'public/bower_components/polymer/polymer-micro.html'
-    ]) 
-      .pipe(concat('polymer.html'))
-      .pipe(vulcanize({
-          inlineScripts: true,
-          inlineCss: true,
-          implicitStrip: true,
-          stripComments: true
-      }))
-      .pipe(gulp.dest('build/bower_components/polymer'));
-});
-
-gulp.task('vulcanize', ['vulcanize-polymer', 'vulcanize-index', 'vulcanize-views'], function(done) {
-  done();
-});
-
-gulp.task('includes',function(){
-  return gulp.src([
-      'public/images/*',
-      'public/manifest.json'
-  ], { base: 'public' }) 
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('dev',function(){
+gulp.task('conig.dev', function() {
   return gulp.src('config.json')
     .pipe(jeditor({
       'folder': './public'
@@ -84,10 +23,48 @@ gulp.task('dev',function(){
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('prod', ['vulcanize', 'includes'], function(){
+gulp.task('config.prod', ['polymer.build'], function() {
   return gulp.src('config.json')
     .pipe(jeditor({
       'folder': './build'
     }))
     .pipe(gulp.dest('.'));
+});
+
+gulp.task("commit.prod", function() {
+    const p = require("./package.json")
+    const v = p.version.split(".");
+    v[2] = parseInt(v[2]) + 1;
+    const version = v.join(".");
+
+    gulp.src("package.json")
+        .pipe(jeditor({
+            "version": version,
+        }))
+        .pipe(gulp.dest("."))
+        .pipe(gulp.src("./*"))
+            .pipe(git.add({args: "-f"}))
+            .on('finish', function() {
+                git.commit("version " + version)
+                .on('finish', function() {
+                    git.push('origin', 'master');
+                });
+            });
+});
+
+gulp.task("commit.dev", function() {
+    gulp.src("./*")
+        .pipe(git.add({args: "-f"}))
+        .on('finish', function() {
+            git.commit("dev")
+            .on('finish', function() {
+                git.push('origin', 'master');
+            });
+        });
+});
+
+gulp.task("dev", ["config.dev", "commit.dev"], function() {
+});
+
+gulp.task("prod", ["polymer.build", "config.prod", "commit.prod"], function() {
 });

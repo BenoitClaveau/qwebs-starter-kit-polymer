@@ -4,7 +4,6 @@
     "folder": "./build",
     "routes": "./routes.json",
     "http": {
-        "port": 3000,
-        "host": "http://localhost:3000"
+        "port": 3000
     }
 }

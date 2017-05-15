@@ -1,5 +1,6 @@
 {
     "services": [
+        { "name": "$http", "location": "qwebs-http" },
         { "name": "$route", "location": "./services/route" }
     ],
     "locators": [
