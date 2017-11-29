@@ -1,9 +1,0 @@
-{
-    "compress": false,
-    "verbose": true,
-    "folder": "./build",
-    "routes": "./routes.json",
-    "http": {
-        "port": 3000
-    }
-}

@@ -4,8 +4,8 @@
   "description": "Starter kit to create a Qwebs server with Polymer as front-end",
   "main": "server.js",
   "dependencies": {
-    "qwebs": "latest",
-    "qwebs-http": "latest"
+    "qwebs": "^1.0.0-beta.0",
+    "qwebs-http": "^1.0.0-beta.0"
   },
   "devDependencies": {
     "coveralls": "latest",

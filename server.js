@@ -1,9 +1,16 @@
 "use strict";
 
-const Qwebs = require("qwebs");
 const process = require("process");
+const Qwebs = require("qwebs");
 
-let qwebs = new Qwebs();
-let $config = qwebs.resolve("$config");
-$config.http.port = process.env.PORT || $config.http.port;
-qwebs.load();
+process.on("unhandledRejection", (reason, p) => {
+    console.error("Unhandled Rejection at:", p, "reason:", reason);
+});
+
+async function start(){
+    let qwebs = new Qwebs({});    
+    await qwebs.load();
+    console.log("started")
+}
+start();
+

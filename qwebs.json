@@ -1,0 +1,7 @@
+{
+    "folder": "./public",
+    "services": "./services.json",
+    "http": {
+        "port": 3000
+    }
+}

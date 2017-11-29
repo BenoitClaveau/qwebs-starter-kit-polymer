@@ -5,15 +5,14 @@
  */
 "use strict";
 
-const DataError = require("qwebs").DataError;
+const { Error } = require("oups");
 
 class RouteService {
-    constructor($qwebs) {
-        this.$qwebs = $qwebs;
+    constructor() {
     };
     
-    index(request, response) {
-        return this.$qwebs.invoke(request, response, "/index.html");
+    index(ask, reply) {
+        return reply.forward("/index.html");
     };
 };
 

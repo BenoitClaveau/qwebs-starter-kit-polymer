@@ -3,7 +3,7 @@
         { "name": "$http", "location": "qwebs-http" },
         { "name": "$route", "location": "./services/route" }
     ],
-    "locators": [
+    "http-routes": [
         { "get": "/", "service": "$route", "method": "index" },
         { "get": "/*", "service": "$route", "method": "index" }
     ]
